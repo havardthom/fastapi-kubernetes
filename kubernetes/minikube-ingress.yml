@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fastapi-app-boilerplate-ingress
+  # annotations:
+  #   nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - host: fastapi-app-boilerplate
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: my-fastapi
+            port:
+              number: 80
+      # - path: /api(/|$)(.*)
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: my-fastapi
+      #       port:
+      #         number: 80
